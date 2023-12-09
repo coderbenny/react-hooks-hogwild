@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
-function HogTile({ name, image }) {
+function HogTile({ hog }) {
+
+    // State for showing hogDetails
+    const [displayHogInfo, setDisplayHogInfo] = useState(false)
+
 
     // Function for when the hogTile is clicked
     function handleHogClick() {
-        console.log("Hog Clicked!")
+        setDisplayHogInfo(!displayHogInfo)
     }
 
     return (
         <div className="ui card" onClick={handleHogClick}>
             <div className="image">
-                <img src={image} alt={name} />
+                <img src={hog.image} alt={hog.name} />
             </div>
             <div className="content">
-                <p className="header">{name}</p>
+                <p className="header">{hog.name}</p>
+                <div className="hog-details" style={{ display: displayHogInfo ? "block" : "none" }}>
+                    <p><strong>Specialty:</strong> {hog.specialty}</p>
+                    <p><strong>Greased:</strong> {hog.greased}</p>
+                    <p><strong>Weight:</strong> {hog.weight}</p>
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 

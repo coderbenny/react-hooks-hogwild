@@ -3,7 +3,9 @@ import HogTile from "./HogTile";
 
 function HogCollection({ hogData }) {
 
+    // State for all hogs
     const [allHogs, setAllHogs] = useState(hogData)
+
 
     return (
         <>
@@ -11,7 +13,7 @@ function HogCollection({ hogData }) {
             <div className="ui cards container">
                 {allHogs.map((data, index) => {
                     return (
-                        <HogTile key={index} name={data.name} image={data.image} />
+                        <HogTile key={index} hog={data} />
                     )
                 })}
             </div>
