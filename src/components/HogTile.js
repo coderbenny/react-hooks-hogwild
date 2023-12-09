@@ -20,7 +20,7 @@ function HogTile({ hog }) {
                 <p className="header">{hog.name}</p>
                 <div className="hog-details" style={{ display: displayHogInfo ? "block" : "none" }}>
                     <p><strong>Specialty:</strong> {hog.specialty}</p>
-                    <p><strong>Greased:</strong> {hog.greased}</p>
+                    <p> <strong>Greased:</strong> {hog.greased ? "Yes" : "No"}</p>
                     <p><strong>Weight:</strong> {hog.weight}</p>
                 </div>
             </div>
