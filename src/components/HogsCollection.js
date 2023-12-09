@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import HogTile from "./HogTile";
 
 function HogCollection({ hogData }) {
+
+    const [allHogs, setAllHogs] = useState(hogData)
 
     return (
         <>
             <h1>Hog Collection</h1>
             <div className="ui cards container">
-                {hogData.map((data, index) => {
+                {allHogs.map((data, index) => {
                     return (
                         <HogTile key={index} name={data.name} image={data.image} />
                     )
