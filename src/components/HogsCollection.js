@@ -9,9 +9,9 @@ function HogCollection({ hogData }) {
 
     // State for FilterBy
     const [filterBy, setFilterBy] = useState("")
-    console.log(filterBy)
+    // console.log(filterBy)
 
-    // Function for handling filter change
+    // Function for handling filter By Name change
     function handleFilterChange(filterText) {
         if (filterText !== "") {
             setFilterBy(filterText)
@@ -22,14 +22,21 @@ function HogCollection({ hogData }) {
         }
     }
 
-    // Function for Filtering
-
-
+    // Function for handling grease filter change
+    function greaseFilterChange(optionValue) {
+        if (optionValue === "All") {
+            setAllHogs(hogData)
+        } else {
+            const isGreased = optionValue === "true";
+            const afterFilter = allHogs.filter((hog) => hog.greased === isGreased)
+            setAllHogs(afterFilter)
+        }
+    }
 
     return (
         <>
             <h1>Hog Collection</h1>
-            <Filter changeFilter={handleFilterChange} />
+            <Filter handleGreaseFilterChange={greaseFilterChange} changeFilter={handleFilterChange} />
             <div className="ui cards container">
                 {allHogs.map((data, index) => {
                     return (
